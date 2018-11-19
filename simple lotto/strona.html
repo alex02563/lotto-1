@@ -1,0 +1,434 @@
+<html>
+  <head>
+    <meta charset="UTF-8"/>
+
+    <title>Lotto</title>
+    <link rel="Stylesheet" type="text/css" href="css.css" />
+</head>
+<body>
+	<div id="form">
+  <form action="" name="sprawdz">
+      <b> Podaj swoje liczby:</b></br>
+     <input type="number" name="l1" size="2" />
+     <input type="number" name="l2" size="2" />
+     <input type="number" name="l3" size="2" />
+     <input type="number" name="l4" size="2" />
+     <input type="number" name="l5" size="2" />
+     <input type="number" name="l6" size="2" /> </br>
+</br>
+
+ <input type="button" value="SPRAWDŹ" onClick="spr()" id="wynik"</button> </br>
+<p id="losli" onclick="liczby()"><p1>||zobacz wylosowane liczby||</p>
+  <p id="los1"></p>
+  <p id="los2"></p>
+  <p id="los3"></p>
+
+
+</br>
+    <b>losowanie nr.1:</b> </br>
+     <input type="text" name="s1" size="7" />
+     <input type="text" name="s2" size="7" />
+     <input type="text" name="s3" size="7" />
+     <input type="text" name="s4" size="7" />
+     <input type="text" name="s5" size="7" />
+     <input type="text" name="s6" size="7" />
+</br>
+     <b>losowanie nr.2:</b> </br>
+     <input type="text" name="sa1" size="7" />
+     <input type="text" name="sa2" size="7" />
+     <input type="text" name="sa3" size="7" />
+     <input type="text" name="sa4" size="7" />
+     <input type="text" name="sa5" size="7" />
+     <input type="text" name="sa6" size="7" />
+</br>    
+    <b>losowanie nr.3:</b> </br>
+    <input type="text" name="sb1" size="7" />
+     <input type="text" name="sb2" size="7" />
+     <input type="text" name="sb3" size="7" />
+     <input type="text" name="sb4" size="7" />
+     <input type="text" name="sb5" size="7" />
+     <input type="text" name="sb6" size="7" /></br> </br>
+
+
+
+  <input type="button" value="wyniki" onClick="wyniki()"</button> </br></p1>
+<p id="skresklone1"></p>
+<p id="skresklone2"></p>
+<p id="skresklone3"></p>
+<input type="button" value="reset" onClick="window.location.reload()">
+
+           </form>
+       </div>
+       <div id="script">
+    <script type="text/javascript">
+
+       var lotto = new Array();
+    for (var i = 1; i < 50; i++) {
+      lotto.push(i);
+    }
+    lotto.sort(function (a, b) {
+      return Math.round(Math.random() * 2) - 1;
+    });
+    var liczby1 = lotto.splice(0, 6);
+
+    var lotto1 = new Array();
+    for (var i = 1; i < 50; i++) {
+      lotto1.push(i);
+    }
+    lotto1.sort(function (a, b) {
+      return Math.round(Math.random() * 2) - 1;
+    });
+    var liczby2 = lotto1.splice(0, 6);
+     
+    var lotto2 = new Array();
+    for (var i = 1; i < 50; i++) {
+      lotto2.push(i);
+    }
+    lotto2.sort(function (a, b) {
+      return Math.round(Math.random() * 2) - 1;
+    });
+    var liczby3 = lotto2.splice(0, 6);
+   
+    var liczbyWygrane = 0;
+    var liczbyWygrane2 = 0;
+    var liczbyWygrane3 = 0;
+
+	function liczby ()
+	{
+	        document.getElementById("los1").innerHTML =" <b>Losowanie nr.1: " + liczby1.sort(function(a, b){return a - b})+ "</b></br>";
+	+ "</b></br>";
+	        document.getElementById("los2").innerHTML =" <b>Losowanie nr.2: " + liczby2.sort(function(a, b){return a - b})+ "</b></br>";
+	         document.getElementById("los3").innerHTML =" <b>Losowanie nr.3: " + liczby3.sort(function(a, b){return a - b})+ "</b></br>";
+	       }
+    function spr()
+
+{   
+    if(
+        sprawdz.l1.value == sprawdz.l2.value ||
+        sprawdz.l1.value == sprawdz.l3.value ||
+        sprawdz.l1.value == sprawdz.l4.value ||
+        sprawdz.l1.value == sprawdz.l5.value ||
+        sprawdz.l1.value == sprawdz.l6.value ||
+        sprawdz.l2.value == sprawdz.l3.value ||
+        sprawdz.l2.value == sprawdz.l4.value ||
+        sprawdz.l2.value == sprawdz.l5.value ||
+        sprawdz.l2.value == sprawdz.l6.value ||
+        sprawdz.l3.value == sprawdz.l4.value ||
+        sprawdz.l3.value == sprawdz.l5.value ||
+        sprawdz.l3.value == sprawdz.l6.value ||
+        sprawdz.l4.value == sprawdz.l5.value ||
+        sprawdz.l4.value == sprawdz.l6.value ||
+        sprawdz.l5.value == sprawdz.l6.value
+        )
+        {
+          alert ("podałeś takie same liczby, lub zostawiłeś puste pola!")
+        }
+        else
+        {
+    
+      if (
+      sprawdz.l1.value == liczby1[0] ||
+      sprawdz.l1.value == liczby1[1] ||
+      sprawdz.l1.value == liczby1[2] ||
+      sprawdz.l1.value == liczby1[3] ||
+      sprawdz.l1.value == liczby1[4] ||
+      sprawdz.l1.value == liczby1[5] 
+      )
+        {
+        	liczbyWygrane += 1;
+          sprawdz.s1.value = "Trafione";
+        }
+      else
+      {
+        sprawdz.s1.value = "pudło!";
+      }
+      if (
+      sprawdz.l1.value == liczby2[0] ||
+      sprawdz.l1.value == liczby2[1] ||
+      sprawdz.l1.value == liczby2[2] ||
+      sprawdz.l1.value == liczby2[3] ||
+      sprawdz.l1.value == liczby2[4] ||
+      sprawdz.l1.value == liczby2[5] 
+      )
+        {
+        	liczbyWygrane2 += 1;
+          sprawdz.sa1.value = "Trafione";
+        }
+      else
+      {
+        sprawdz.sa1.value = "pudło!";
+      }
+      if (
+      sprawdz.l1.value == liczby3[0] ||
+      sprawdz.l1.value == liczby3[1] ||
+      sprawdz.l1.value == liczby3[2] ||
+      sprawdz.l1.value == liczby3[3] ||
+      sprawdz.l1.value == liczby3[4] ||
+      sprawdz.l1.value == liczby3[5] 
+      )
+        {
+        	liczbyWygrane3 += 1;
+          sprawdz.sb1.value = "Trafione";
+        }
+      else
+      {
+        sprawdz.sb1.value = "pudło!";
+      }
+      if (
+      sprawdz.l2.value == liczby1[0] ||
+      sprawdz.l2.value == liczby1[1] ||
+      sprawdz.l2.value == liczby1[2] ||
+      sprawdz.l2.value == liczby1[3] ||
+      sprawdz.l2.value == liczby1[4] ||
+      sprawdz.l2.value == liczby1[5] 
+      )
+        {
+        	liczbyWygrane += 1;
+          sprawdz.s2.value = "Trafione";
+        }
+      else
+      {
+        sprawdz.s2.value = "pudło!";
+      }
+      if (
+      sprawdz.l2.value == liczby2[0] ||
+      sprawdz.l2.value == liczby2[1] ||
+      sprawdz.l2.value == liczby2[2] ||
+      sprawdz.l2.value == liczby2[3] ||
+      sprawdz.l2.value == liczby2[4] ||
+      sprawdz.l2.value == liczby2[5] 
+      )
+        {
+        	liczbyWygrane2 += 1;
+          sprawdz.sa2.value = "Trafione";
+        }
+      else
+      {
+        sprawdz.sa2.value = "pudło!";
+      }
+      if (
+      sprawdz.l2.value == liczby3[0] ||
+      sprawdz.l2.value == liczby3[1] ||
+      sprawdz.l2.value == liczby3[2] ||
+      sprawdz.l2.value == liczby3[3] ||
+      sprawdz.l2.value == liczby3[4] ||
+      sprawdz.l2.value == liczby3[5] 
+      )
+        {
+        	liczbyWygrane3 += 1;
+          sprawdz.sb2.value = "Trafione";
+        }
+      else
+      {
+        sprawdz.sb2.value = "pudło!";
+      }
+      if (
+      sprawdz.l3.value == liczby1[0] ||
+      sprawdz.l3.value == liczby1[1] ||
+      sprawdz.l3.value == liczby1[2] ||
+      sprawdz.l3.value == liczby1[3] ||
+      sprawdz.l3.value == liczby1[4] ||
+      sprawdz.l3.value == liczby1[5] 
+      )
+        {
+        	liczbyWygrane += 1;
+          sprawdz.s3.value = "Trafione";
+        }
+      else
+      {
+        sprawdz.s3.value = "pudło!";
+      }
+      if (
+      sprawdz.l3.value == liczby2[0] ||
+      sprawdz.l3.value == liczby2[1] ||
+      sprawdz.l3.value == liczby2[2] ||
+      sprawdz.l3.value == liczby2[3] ||
+      sprawdz.l3.value == liczby2[4] ||
+      sprawdz.l3.value == liczby2[5] 
+      )
+        {
+        	liczbyWygrane2 += 1;
+
+          sprawdz.sa3.value = "Trafione";
+        
+        }
+      else
+      {
+        sprawdz.sa3.value = "pudło!";
+      }
+      if (
+      sprawdz.l3.value == liczby3[0] ||
+      sprawdz.l3.value == liczby3[1] ||
+      sprawdz.l3.value == liczby3[2] ||
+      sprawdz.l3.value == liczby3[3] ||
+      sprawdz.l3.value == liczby3[4] ||
+      sprawdz.l3.value == liczby3[5] 
+      )
+        {
+        	liczbyWygrane3 += 1;
+          sprawdz.sb3.value = "Trafione";
+        }
+      else
+      {
+        sprawdz.sb3.value = "pudło!";
+      }
+       if (
+      sprawdz.l4.value == liczby1[0] ||
+      sprawdz.l4.value == liczby1[1] ||
+      sprawdz.l4.value == liczby1[2] ||
+      sprawdz.l4.value == liczby1[3] ||
+      sprawdz.l4.value == liczby1[4] ||
+      sprawdz.l4.value == liczby1[5] 
+      )
+        {
+        	liczbyWygrane += 1;
+          sprawdz.s4.value = "Trafione";
+        }
+      else
+      {
+        sprawdz.s4.value = "pudło!";
+      }
+      if (
+      sprawdz.l4.value == liczby2[0] ||
+      sprawdz.l4.value == liczby2[1] ||
+      sprawdz.l4.value == liczby2[2] ||
+      sprawdz.l4.value == liczby2[3] ||
+      sprawdz.l4.value == liczby2[4] ||
+      sprawdz.l4.value == liczby2[5] 
+      )
+        {
+        	liczbyWygrane2 += 1;
+          sprawdz.sa4.value = "Trafione";
+        }
+      else
+      {
+        sprawdz.sa4.value = "pudło!";
+      }
+      if (
+      sprawdz.l4.value == liczby3[0] ||
+      sprawdz.l4.value == liczby3[1] ||
+      sprawdz.l4.value == liczby3[2] ||
+      sprawdz.l4.value == liczby3[3] ||
+      sprawdz.l4.value == liczby3[4] ||
+      sprawdz.l4.value == liczby3[5] 
+      )
+        {
+        	liczbyWygrane3 += 1;
+          sprawdz.sb4.value = "Trafione";
+        }
+      else
+      {
+        sprawdz.sb4.value = "pudło!";
+      }
+       if (
+      sprawdz.l5.value == liczby1[0] ||
+      sprawdz.l5.value == liczby1[1] ||
+      sprawdz.l5.value == liczby1[2] ||
+      sprawdz.l5.value == liczby1[3] ||
+      sprawdz.l5.value == liczby1[4] ||
+      sprawdz.l5.value == liczby1[5] 
+      )
+        {
+        	liczbyWygrane += 1;
+          sprawdz.s5.value = "Trafione";
+        }
+      else
+      {
+        sprawdz.s5.value = "pudło!";
+      }
+      if (
+      sprawdz.l5.value == liczby2[0] ||
+      sprawdz.l5.value == liczby2[1] ||
+      sprawdz.l5.value == liczby2[2] ||
+      sprawdz.l5.value == liczby2[3] ||
+      sprawdz.l5.value == liczby2[4] ||
+      sprawdz.l5.value == liczby2[5] 
+      )
+        {
+        	liczbyWygrane2 += 1;
+          sprawdz.sa5.value = "Trafione";
+        }
+      else
+      {
+        sprawdz.sa5.value = "pudło!";
+      }
+      if (
+      sprawdz.l5.value == liczby3[0] ||
+      sprawdz.l5.value == liczby3[1] ||
+      sprawdz.l5.value == liczby3[2] ||
+      sprawdz.l5.value == liczby3[3] ||
+      sprawdz.l5.value == liczby3[4] ||
+      sprawdz.l5.value == liczby3[5] 
+      )
+        {
+        	liczbyWygrane3 += 1;
+          sprawdz.sb5.value = "Trafione";
+        }
+      else
+      {
+        sprawdz.sb5.value = "pudło!";
+      }
+      if (
+      sprawdz.l6.value == liczby1[0] ||
+      sprawdz.l6.value == liczby1[1] ||
+      sprawdz.l6.value == liczby1[2] ||
+      sprawdz.l6.value == liczby1[3] ||
+      sprawdz.l6.value == liczby1[4] ||
+      sprawdz.l6.value == liczby1[5] 
+      )
+        {
+        	liczbyWygrane += 1;
+          sprawdz.s6.value = "Trafione";
+        }
+      else
+      {
+        sprawdz.s6.value = "pudło!";
+      }
+      if (
+      sprawdz.l6.value == liczby2[0] ||
+      sprawdz.l6.value == liczby2[1] ||
+      sprawdz.l6.value == liczby2[2] ||
+      sprawdz.l6.value == liczby2[3] ||
+      sprawdz.l6.value == liczby2[4] ||
+      sprawdz.l6.value == liczby2[5] 
+      )
+        {
+        	liczbyWygrane2 += 1;
+          sprawdz.sa6.value = "Trafione";
+        }
+      else
+      {
+        sprawdz.sa6.value = "pudło!";
+      }
+      if (
+      sprawdz.l6.value == liczby3[0] ||
+      sprawdz.l6.value == liczby3[1] ||
+      sprawdz.l6.value == liczby3[2] ||
+      sprawdz.l6.value == liczby3[3] ||
+      sprawdz.l6.value == liczby3[4] ||
+      sprawdz.l6.value == liczby3[5] 
+      )
+        {
+        	liczbyWygrane3+= 1;
+          sprawdz.sb6.value = "Trafione";
+        }
+      else
+      {
+        sprawdz.sb6.value = "pudło!";
+      }
+
+        
+    }
+
+}
+function wyniki()
+{
+	document.getElementById("skresklone1").innerHTML ="z pierwszego losowania trafiono: "+liczbyWygrane+" liczb </br>";
+	document.getElementById("skresklone2").innerHTML ="z drugiego losowania trafiono: "+liczbyWygrane2+" liczb </br>";
+	document.getElementById("skresklone3").innerHTML ="z trzeciego losowania trafiono: "+liczbyWygrane3+" liczb </br>";
+}
+ 
+  </script>
+</div>
+  </body>
+</html>
